@@ -6,18 +6,31 @@ const validator = require('express-validator');
 const { body,validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
 
-exports.first = function(req,res) {
+exports.allNotes = function(req,res) {
 
     Note.find({},'summary')
-    // .populate('createdby')
+    .populate('createdby')
     .exec(function (err, list_note) {
         if (err) {
-            res.json();
+            res.json(err); // need to figure out how to handle errors
         }
-        // successful so send list of notes
-        // let notesJSON = JSON.stringify(list_note);
-        // res.json(notesJSON);
-        res.json(list_note);
+        else { 
+            // successful so send list of notes
+            res.json(list_note);
         }
-    )
+    })
+};
+
+exports.allUsers = (req,res) => {
+
+    User.find({},'name')
+    .exec((err, list_user) => {
+        if (err) {
+            res.json(err); // need to figure out how to handle errors
+        }
+        else {
+            // successful so send list of users
+            res.json(list_user);
+        }
+    })
 };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import List from './pages/List';
+import userList from './pages/userList';
 import noteList from './pages/noteList';
 import tictactoe from './pages/tictactoe/tictactoe';
 
@@ -16,7 +16,7 @@ class App extends Component {
               <Link to={'./'}>Home</Link>
             </li>
             <li className='navbar'>
-              <Link to={'./list'}>List</Link>
+              <Link to={'./userList'}>List of Users</Link>
             </li>
             <li className='navbar'>
               <Link to={'./noteList'}>List of Notes</Link>
@@ -28,7 +28,7 @@ class App extends Component {
         </nav>
       <Switch>
       <Route exact path='/' component={Home}/>
-      <Route path='/list' component={List}/>
+      <Route path='/userlist' component={userList}/>
       <Route path='/noteList' component={noteList}/>
       <Route path='/tictactoe' component={tictactoe}/>
       <Route path='*' component={Home}/>
